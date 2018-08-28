@@ -11,6 +11,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import logo from './logo.svg';
 import { createMuiTheme } from '@material-ui/core/styles';
 import indigo from '@material-ui/core/colors/indigo';
+import grey from '@material-ui/core/colors/grey';
 
 const uitheme = createMuiTheme({
     palette: {
@@ -18,6 +19,7 @@ const uitheme = createMuiTheme({
         secondary: {
             main: '#008b8b',
         },
+        extended: grey[50],
     },
 });
 
@@ -34,7 +36,7 @@ const styles = theme => ({
         },
     },
     paper: {
-        marginTop: theme.spacing.unit * 8,
+        marginTop: theme.spacing.unit * 3,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -49,16 +51,28 @@ const styles = theme => ({
         marginTop: theme.spacing.unit,
     },
     submit: {
-        marginTop: theme.spacing.unit * 6,
-        width: '110px',
-        float: 'right',
+        marginTop: theme.spacing.unit * 3,
+        marginBottom: theme.spacing.unit * 3,
         backgroundColor: uitheme.palette.secondary.main,
     },
+    applogopaper: {
+        marginTop: theme.spacing.unit * 4,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    },    
     applogo: {
-        marginTop: theme.spacing.unit * 3,
-        width: '64px',
-        height: '64px',
+        width: '96px',
+        height: '96px',
     },
+    applogo_text: {
+        color: uitheme.palette.extended,
+    },
+    appfooter_text: {
+        color: uitheme.palette.extended,
+        marginBottom: theme.spacing.unit * 2,
+    },    
 });
 
 function SignIn(props) {
@@ -68,9 +82,14 @@ function SignIn(props) {
         <React.Fragment>
             <CssBaseline />
             <main className={classes.layout}>
-                <Paper className={classes.paper}>
+                <div className={classes.applogopaper}>
                     <img src={logo} className={classes.applogo} alt="logo" />
-                    <Typography variant="headline">Sign In</Typography>
+                    {/* <Typography variant="headline" className={classes.applogo_text}>BASE</Typography> */}
+                </div>
+
+                <Paper className={classes.paper}>
+                    <Typography variant="headline">Sign in</Typography>
+                    <Typography variant="Subheading">with your Base Account</Typography>
                     <form className={classes.form}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="subsid">Subscription Id</InputLabel>
@@ -101,7 +120,7 @@ function SignIn(props) {
                     </form>
                 </Paper>
                 <br />
-                <Typography variant="caption">Created by Authentic System Solutions</Typography>
+                <Typography variant="caption" className={classes.appfooter_text}>Created by Authentic System Solutions</Typography>
             </main>
         </React.Fragment>
     );
